@@ -1,4 +1,4 @@
-// ignore_for_file: deprecated_member_use
+// ignore_for_file: deprecated_member_use, prefer_final_fields
 
 import 'dart:html';
 import 'dart:typed_data';
@@ -36,60 +36,44 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  // ignore: non_constant_identifier_names
+  List<int> _totalAmmount = [];
   List<dynamic> _food_objects = [
     {
       'id': 1,
       'food': 'Rice with hotdogs',
       'image': 'rice_w_h.jpg',
-      'price': 'K34'
+      'price': 34
     },
     {
       'id': 2,
       'food': 'Rice with potatoes',
       'image': 'rice_w_p.jpeg',
-      'price': 'K34'
+      'price': 34
     },
     {
       'id': 3,
       'food': 'Rice with nothing',
       'image': 'rice_w_n.jpeg',
-      'price': 'K34'
+      'price': 34
     },
     {
       'id': 4,
       'food': 'Rice with chilli',
       'image': 'rice_w_c.jpg',
-      'price': 'K34'
+      'price': 33
     },
     {
       'id': 5,
       'food': 'Rice with tomato source',
       'image': 'rice_w_t.jpeg',
-      'price': 'K34'
+      'price': 34
     },
     {
       'id': 5,
       'food': 'Rice with tomato source',
-      'image': 'rice_w_t.jpeg',
-      'price': 'K34'
-    },
-    {
-      'id': 5,
-      'food': 'Rice with tomato source',
-      'image': 'rice_w_t.jpeg',
-      'price': 'K34'
-    },
-    {
-      'id': 5,
-      'food': 'Rice with tomato source',
-      'image': 'rice_w_t.jpeg',
-      'price': 'K34'
-    },
-    {
-      'id': 5,
-      'food': 'Rice with tomato source',
-      'image': 'rice_w_t.jpeg',
-      'price': 'K34'
+      'image': 'rice_w_c.jpg',
+      'price': 34
     },
   ];
   @override
@@ -102,10 +86,9 @@ class _MyHomePageState extends State<MyHomePage> {
           FittedBox(
           fit: BoxFit.fitWidth,
           child: Image.asset(
-            'assets/images/fruits.jpeg'
+            'assets/images/bg_image2.jpg'
           ,)
           ),
-          
           // for food listing
           Container(
             alignment: FractionalOffset.center,
@@ -119,11 +102,11 @@ class _MyHomePageState extends State<MyHomePage> {
                 const Text('K176.00', style: TextStyle(color: Color(0xFF2E3233), fontWeight: FontWeight.bold, fontSize: 24),),
               ],
             ),
-          ), 
+          ),
 
-          Align(alignment: Alignment.topRight, child: Container()),
           Column(
-            children: _food_objects.map((element) => Card(
+            children: _food_objects.map((element) =>
+            Card(
             child: Row(
               children: [
                 Padding(
@@ -133,22 +116,29 @@ class _MyHomePageState extends State<MyHomePage> {
                     borderRadius: BorderRadius.all(Radius.circular(10.0)),
                     color: Color.fromARGB(255, 49, 45, 45),
                     ),
-                    child: Image.asset("assets/images/rice_w_h.jpg", width: 70, height: 70,),
+                    child: Image.asset("assets/images/${element['image']}", width: 70, height: 70,),
                   ),
                 ),
                 Row(
-                  children: const [
+                  children: [
                   Align(
                     alignment: Alignment.centerRight,
-                    child: Text("Rice", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
-                  ),],
-                ) 
+                    child: Text(
+                      element['food'].toString(),
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold)
+                      ),
+                    ),
+                  ],
+                )
               ],
             ),
           )).toList()
-          ),
 
-          
+
+          ),
         ],
       ))
     );
