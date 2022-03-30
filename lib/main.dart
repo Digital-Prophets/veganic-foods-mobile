@@ -1,12 +1,7 @@
+
 // ignore_for_file: deprecated_member_use, prefer_final_fields
 
-import 'dart:html';
-import 'dart:typed_data';
-import 'dart:ui';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
 void main() {
   runApp(const MyApp());
@@ -52,6 +47,12 @@ class _MyHomePageState extends State<MyHomePage> {
       'price': 34
     },
     {
+      'id': 1,
+      'food': 'Rice with hotdogs',
+      'image': 'rice_w_h.jpg',
+      'price': 34
+    },
+    {
       'id': 3,
       'food': 'Rice with nothing',
       'image': 'rice_w_n.jpeg',
@@ -76,6 +77,7 @@ class _MyHomePageState extends State<MyHomePage> {
       'price': 34
     },
   ];
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -110,7 +112,7 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Row(
               children: [
                 Padding(
-                padding: const EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(6.0),
                 child: Container(
                     decoration: const BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(10.0)),
@@ -119,27 +121,37 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: Image.asset("assets/images/${element['image']}", width: 70, height: 70,),
                   ),
                 ),
-                Row(
+                Column(
                   children: [
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: Text(
-                      element['food'].toString(),
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold)
+                    Expanded(
+                      flex: 2,
+                      child: Text(
+                        element['food'].toString(),
+                        style: const TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold)
+                      ),
+                    ),
+                    Expanded(
+                      flex: 2,
+                      child: Text(
+                        "K"+element['price'].toString(),
+                        style: const TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold)
                       ),
                     ),
                   ],
-                )
+                ),
+               
               ],
             ),
           )).toList()
-
-
           ),
+
+          
         ],
+
       ))
     );
   }
