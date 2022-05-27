@@ -41,7 +41,7 @@ class _QRCodeScannerState extends State<QRCodeScanner> {
         body: Column(
           children: [
             const SizedBox(
-              height: 150,
+              height: 156,
               child: PagesBackground(),
             ),
             SafeArea(
@@ -49,7 +49,7 @@ class _QRCodeScannerState extends State<QRCodeScanner> {
                 children: [
                   Container(
                     width: size.width,
-                    height: size.height * 0.7,
+                    height: size.height * 0.67,
                     padding: const EdgeInsets.only(
                         left: 0, top: 8, right: 0, bottom: 0),
                     decoration: const BoxDecoration(
@@ -84,18 +84,9 @@ class _QRCodeScannerState extends State<QRCodeScanner> {
                               ),
                               child: _buildQrView(context)),
                         ),
-                        AppButton(
-                          text: "Proceed",
-                          bgColor: Colors.black,
-                          textColor: Colors.white,
-                          borderRadius: 30,
-                          fontSize: 25,
-                          fontWeight: FontWeight.w600,
-                          onTap: () {
-                            Navigator.pushNamed(context, Routes.cart);
-                          },
-                          height: 10,
-                        )
+                        SizedBox(
+                          height:10,
+                        ),
                       ],
                     ),
                   ),

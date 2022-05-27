@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:veganic_foods_app/utils/routes.dart';
 import 'package:veganic_foods_app/widgets/custom_button.dart';
 import 'background_utils.dart';
+import 'package:veganic_foods_app/screens/scanning_page/scan.dart';
 
 class Components extends StatelessWidget {
   const Components({Key? key}) : super(key: key);
@@ -23,7 +24,7 @@ class Components extends StatelessWidget {
                 fontSize: 25,
                 fontWeight: FontWeight.w600,
                 onTap: () {
-                  Navigator.pushNamed(context, Routes.scan);
+                  Navigator.pushNamed(context, "/ScanningPage()");
                 },
                 height: 24,
               )),

@@ -6,4 +6,6 @@ class Routes {
   static const String restaurant = '/restaurant';
   static const String cart = '/cart';
   static const String payment = '/payment';
+
+  static elementAt(int selectedIndex) {}
 }

@@ -1,6 +1,7 @@
 // ignore: file_names
 import 'package:flutter/material.dart';
 import 'package:veganic_foods_app/constants.dart';
+import 'package:veganic_foods_app/screens/basket_page/basket.dart';
 import 'package:veganic_foods_app/utils/routes.dart';
 import 'package:veganic_foods_app/widgets/custom_button.dart';
 import '../../widgets/default_back_button.dart';
@@ -38,16 +39,17 @@ class _PaymentListState extends State<PaymentList> {
     return Scaffold(
         backgroundColor: bGcolor,
         body: Column(children: [
-          // ignore: prefer_const_constructors
           backgroundbubbles(
-            name: 'Payment',
+            name: 'Payment', height: 170,
           ),
           Column(children: [
             SizedBox(
-              height: 60,
+              height: 10,
             ),
             Container(
                 width: size.width,
+                height: size.height * 0.67,
+                
                 padding: const EdgeInsets.all(0),
                 decoration: const BoxDecoration(
                     color: Colors.white,
@@ -56,11 +58,12 @@ class _PaymentListState extends State<PaymentList> {
                         topRight: Radius.circular(40))),
                 child: Column(children: [
                   const SizedBox(
-                    height: 40,
+                    height: 20,
                   ),
 
                   Container(
-                    padding: const EdgeInsets.only(left: 30, top: 5),
+                    
+                    padding: const EdgeInsets.only(left: 30, top: 1),
                     child: Row(
                       // ignore: prefer_const_literals_to_create_immutables
                       children: [
@@ -140,37 +143,27 @@ class _PaymentListState extends State<PaymentList> {
                   const SizedBox(
                     height: 10,
                   ),
+            //       TextButton(
+                    
+            //         onPressed: () {
+            // Navigator.of(context).pushNamed('/scan');},
+            //         child: Text('Looks like a FlatButton'),
+            //       ),
                   AppButton(
                     text: 'Proceed',
                     fontSize: 20,
                     textColor: Colors.white,
                     bgColor: Colors.black,
-                    onTap: () {
-                      Navigator.pushNamed(context, Routes.home);
-                    },
-                    fontWeight: FontWeight.bold,
-                    borderRadius: 30,
-                    height: 10,
-                  ),
-                  // ElevatedButton(
-                  //   style: ElevatedButton.styleFrom(
-                  //       shadowColor: Colors.black,
-                  //       shape: RoundedRectangleBorder(
-                  //           borderRadius: BorderRadius.circular(20)),
-                  //       primary: Colors.black,
-                  //       onPrimary: Colors.white,
-                  //       // ignore: prefer_const_constructors
-                  //       textStyle: TextStyle(
-                  //           fontSize: 20, fontWeight: FontWeight.normal),
-                  //       minimumSize: const Size(280, 40)),
-                  //   child: const Text('Proceed'),
-                  //   onPressed: () {},
+                    // onPressed: () { },
+                    onTap: () {Navigator.pushNamed(context,
+                      Routes.scan);
+                      
+                    }, borderRadius: 30, fontWeight: FontWeight.bold, height: 10,
+                  //   fontWeight: FontWeight.bold,
+                  //   borderRadius: 30,
+                  //   height: 10,
                   // ),
-                  // ignore: prefer_const_constructors
-                  SizedBox(
-                    height: 20,
-                  )
-                ]))
+            )]))
           ])
         ]));
   }
@@ -207,7 +200,6 @@ class RadiotileCSS extends StatelessWidget {
           flex: 1,
           child: InkWell(
             child: Row(
-              // ignore: prefer_const_literals_to_create_immutables
               children: [
                 Image.asset(
                   imagestring,
@@ -218,7 +210,6 @@ class RadiotileCSS extends StatelessWidget {
                 ),
                 Text(
                   text,
-                  // ignore: prefer_const_constructors
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 )
               ],
@@ -227,8 +218,4 @@ class RadiotileCSS extends StatelessWidget {
     ]);
   }
 } 
-//                 ),
-//               ]),
-//             ),
-//           ],
-//         ));
+

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:veganic_foods_app/constants.dart';
+import 'package:veganic_foods_app/screens/payment_page/payment.dart';
 import 'package:veganic_foods_app/widgets/custom_button.dart';
 import '../../utils/routes.dart';
 import '../../widgets/default_back_button.dart';
@@ -8,6 +9,8 @@ import 'components/list_items.dart';
 import 'components/food_dict.dart';
 import 'components/list_widgets.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:qr_code_scanner/qr_code_scanner.dart';
+import 'package:veganic_foods_app/main.dart';
 
 class Basketpage extends StatelessWidget {
   final listKey = GlobalKey<AnimatedListState>();
@@ -23,14 +26,15 @@ class Basketpage extends StatelessWidget {
       body: Column(
         children: [
           SizedBox(
-            height: 160,
+            height: 165,
             child: backgroundbubbles(
-              name: 'Basket',
+              name: 'Basket', height: 130,
+              
             ),
           ),
           Container(
             padding: EdgeInsets.all(8),
-            height: size.height * 0.72,
+            height: size.height * 0.691,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(40),
@@ -58,6 +62,7 @@ class Basketpage extends StatelessWidget {
                           ),
                           children: [
                             //make a button
+                            
                             SlidableAction(
                               autoClose: true,
                               flex: 2,
@@ -75,20 +80,34 @@ class Basketpage extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: 30,
+                  height: 2,
                 ),
                 //change to app button
+                
                 AppButton(
                     text: 'Proceed',
                     fontSize: 20,
                     textColor: Colors.white,
                     bgColor: Colors.black,
+                    
                     onTap: () {
-                      Navigator.pushNamed(context, Routes.payment);
+                      // Navigator.pushNamed(context,  "/PaymentPage");
+                  //  Navigator.pushNamed(context, Routes.scan);
+                  //  Navigator.push(context, new MaterialPageRoute(
+                  //   builder: (context) => new PaymentPage())
+                  // );
+                  
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => PaymentPage()),
+                  );
+                //  Navigator.of(context).pushReplacementNamed('/screen1');
+                  // Navigator.of(context, rootNavigator: true).pushNamed("/PaymentPage");
                     },
                     fontWeight: FontWeight.bold,
                     borderRadius: 30,
-                    height: 10)
+                    height: 1)
+                    
               ],
             ),
           ),
@@ -96,7 +115,6 @@ class Basketpage extends StatelessWidget {
       ),
     );
   }
-
   removeitem(int index) {
     final removeItem = items[index];
     items.removeAt(index);
