@@ -1,37 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import 'package:veganic_foods_app/widgets/custom_button.dart';
 import '../screens/scanning_page/scan.dart';
 
-Notfound() {
-  return Scaffold(
-    body: Stack(
-      fit: StackFit.expand,
-      children: [
-        Image.asset(
-          "assets/images/2_404 Error.png",
-          fit: BoxFit.cover,
-        ),
-        ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
-            ),
-            primary: Color(0xFF6B92F2),
-            onPrimary: Colors.white,
-            padding:
-                EdgeInsets.only(top: 400, bottom: 20, left: 100, right: 100),
+Notfound(image) => Scaffold(
+      body: Stack(
+        // fit: StackFit.expand,
+        children: [
+          Image.asset(
+            image,
+            fit: BoxFit.fill,
           ),
-          onPressed: () {
-            Get.to(ScanningPage());
-          },
-          child: Text(
-            "something  went wrong, please check your internet connection or make sure the bar code is correct",
-            maxLines: 3,
-            style: TextStyle(color: Colors.white),
-          ),
-        )
-      ],
-    ),
-  );
-}
+          Container(
+            padding: EdgeInsets.only(left: 20, top: 600, bottom: 5),
+            child: AppButton(
+                text: 'return to scan',
+                fontSize: 15,
+                textColor: Colors.white,
+                bgColor: Colors.green.shade300,
+                onTap: () => Get.to(ScanningPage()),
+                fontWeight: FontWeight.normal,
+                borderRadius: 40,
+                height: 24),
+          )
+        ],
+      ),
+    );

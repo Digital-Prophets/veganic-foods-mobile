@@ -7,6 +7,7 @@ import 'package:veganic_foods_app/providers/cart_provider.dart';
 import 'package:veganic_foods_app/screens/details_page/components/product_class.dart';
 import 'package:veganic_foods_app/utils/routes.dart';
 import 'package:veganic_foods_app/widgets/custom_button.dart';
+import 'package:veganic_foods_app/widgets/error_pages.dart';
 
 // ignore: must_be_immutable
 class Details extends StatefulWidget {
@@ -381,7 +382,12 @@ class _DetailsState extends State<Details> {
                       onTap: () {
                         context.read<Cart>().addtoCart(prod);
                         print(prod.price);
-                        Navigator.pushNamed(context, Routes.cart);
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Notfound(
+                                    'assets/images/1_No Connection.png')));
+                        // Navigator.pushNamed(context, Routes.cart);
                       },
                       fontWeight: FontWeight.normal,
                       borderRadius: 40,
@@ -406,7 +412,7 @@ class _DetailsState extends State<Details> {
               child: Center(
                 child: Text(
                   widget.name,
-                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
               )),
         ),
@@ -448,40 +454,3 @@ class ingredient_images extends StatelessWidget {
     );
   }
 }
-                            // CustomNumberPicker(
-                            //   shape: Border.all(
-                            //     width: 0
-                            //       ),
-                            //     customAddButton: IconButton(
-                            //       icon: Icon(
-                            //         Icons.add,
-                            //         size: 13,
-                            //         color: Colors.black,
-                            //       ),
-                            //       onPressed: () {
-                            //         setState(() {
-                            //           price += init_price;
-                            //           prod.price = price;
-                            //         });
-                            //       },
-                            //     ),
-                            //     customMinusButton: IconButton(
-                            //       icon: Icon(
-                            //         Icons.remove,
-                            //         size: 13,
-                            //         color: Colors.black,
-                            //       ),
-                            //       onPressed: () {
-                            //         setState(() {
-                            //           price -= init_price;
-                            //           prod.price = price;
-                            //         });
-                            //       },
-                            //     ),
-                            //     onValue: (newvalue) {
-                                  
-                            //     },
-                            //     initialValue: 1,
-                            //     maxValue: 20,
-                            //     minValue: 1,
-                            //     step: 1),

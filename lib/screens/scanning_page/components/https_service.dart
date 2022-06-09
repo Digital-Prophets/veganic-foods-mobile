@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:http/http.dart' as http;
 import 'package:veganic_foods_app/screens/details_page/details.dart';
+import 'package:veganic_foods_app/widgets/error_pages.dart';
 
 import '../../details_page/components/product_class.dart';
 
@@ -23,34 +24,34 @@ class _HttppState extends State<Httpp> {
       body: FutureBuilder(
           future: _future,
           builder: (context, AsyncSnapshot<Product> snapshot) {
-            print(snapshot.error);
-            switch (snapshot.connectionState) {
-              case ConnectionState.waiting:
-                return Center(
-                  child: CircularProgressIndicator(),
-                );
-              case ConnectionState.done:
-                SchedulerBinding.instance?.addPostFrameCallback((_) {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => Details(
-                                product_id: snapshot.data!.product_id,
-                                category: snapshot.data!.category,
-                                name: snapshot.data!.name,
-                                quantity: snapshot.data!.quantity,
-                                price: snapshot.data!.price,
-                                description: snapshot.data!.description,
-                                image: snapshot.data!.image,
-                              )));
-                });
-                break;
-              case ConnectionState.none:
-                throw Exception('couldnt get item');
-              default:
-                return Center(
-                  child: Text('error'),
-                );
+            if (snapshot.hasData) {
+              switch (snapshot.connectionState) {
+                case ConnectionState.waiting:
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                case ConnectionState.done:
+                  SchedulerBinding.instance?.addPostFrameCallback((_) {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Details(
+                                  product_id: snapshot.data!.product_id,
+                                  category: snapshot.data!.category,
+                                  name: snapshot.data!.name,
+                                  quantity: snapshot.data!.quantity,
+                                  price: snapshot.data!.price,
+                                  description: snapshot.data!.description,
+                                  image: snapshot.data!.image,
+                                )));
+                  });
+                  break;
+                case ConnectionState.none:
+                  return Notfound(
+                      'something went wrong, please check your internet connection');
+                default:
+                  return Notfound('oops somthing went wrong');
+              }
             }
             return const Center(child: CircularProgressIndicator());
           }),
@@ -68,10 +69,7 @@ Future<Product> _getdata(String? id) async {
     var products = Product.fromJson(productMap);
     return products;
 //====================================================================
-  }
-  if (res.statusCode == 404) {
-    throw '';
   } else {
-    throw Exception(res.statusCode.toString());
+    return Notfound('please check your internet connection');
   }
 }
