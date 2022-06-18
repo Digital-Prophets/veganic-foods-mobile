@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:veganic_foods_app/providers/cart_provider.dart';
+import 'package:veganic_foods_app/constants.dart';
 import 'package:veganic_foods_app/utils/routes.dart';
 import 'package:veganic_foods_app/widgets/custom_button.dart';
 import 'background_utils.dart';

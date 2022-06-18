@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:veganic_foods_app/providers/cart_provider.dart';
 import 'package:veganic_foods_app/screens/basket_page/basket.dart';
-import 'package:veganic_foods_app/screens/details_page/details.dart';
 import 'package:veganic_foods_app/screens/home/home.dart';
 import 'package:veganic_foods_app/screens/payment_page/payment.dart';
 import 'package:veganic_foods_app/screens/scanning_page/scan.dart';
@@ -46,8 +45,8 @@ class MyApp extends StatelessWidget {
       //   quantity: 1,
       // ),
       routes: {
-        Routes.home: (context) => const LandingPage(),
-        Routes.scan: (context) => const ScanningPage(),
+        Routes.home: (context) =>  LandingPage(),
+        Routes.scan: (context) =>  ScanningPage(),
         Routes.cart: (context) => Basketpage(),
         Routes.payment: (context) => const PaymentPage()
       },

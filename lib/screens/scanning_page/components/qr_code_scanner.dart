@@ -37,8 +37,8 @@ class _QRCodeScannerState extends State<QRCodeScanner> {
         backgroundColor: bGcolor,
         body: Column(
           children: [
-            const SizedBox(
-              height: 150,
+             SizedBox(
+              height: size.height*0.19,
               child: PagesBackground(),
             ),
             SafeArea(
@@ -85,28 +85,6 @@ class _QRCodeScannerState extends State<QRCodeScanner> {
                               ),
                               child: _buildQrView(context)),
                         ),
-                        // AppButton(
-                        //   text: "Proceed",
-                        //   bgColor: Colors.black,
-                        //   textColor: Colors.white,
-                        //   borderRadius: 30,
-                        //   fontSize: 25,
-                        //   fontWeight: FontWeight.w600,
-                        //   onTap: () {
-                        //     Navigator.push(
-                        //         context,
-                        //         MaterialPageRoute(
-                        //             builder: ((context) => Details(
-                        //                 product_id: 1,
-                        //                 name: 'teryaki',
-                        //                 description: 'soup and that',
-                        //                 price: 40,
-                        //                 quantity: 1,
-                        //                 image: '',
-                        //                 category: 2))));
-                        //   },
-                        //   height: 10,
-                        // )
                       ],
                     ),
                   ),
