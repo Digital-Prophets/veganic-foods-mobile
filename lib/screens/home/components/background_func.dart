@@ -24,7 +24,6 @@ class Components extends StatelessWidget {
                 fontSize: 25,
                 fontWeight: FontWeight.w600,
                 onTap: () {
-                  Cart().clearall();
                   Navigator.pushNamed(context, Routes.scan);
                 },
                 height: 24,

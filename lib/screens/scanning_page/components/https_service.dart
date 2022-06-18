@@ -31,7 +31,7 @@ class _HttppState extends State<Httpp> {
                     child: CircularProgressIndicator(),
                   );
                 case ConnectionState.done:
-                  SchedulerBinding.instance?.addPostFrameCallback((_) {
+                  SchedulerBinding.instance!.addPostFrameCallback((_) {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
