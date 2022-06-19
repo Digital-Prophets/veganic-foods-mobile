@@ -31,25 +31,27 @@ class _BasketpageState extends State<Basketpage> {
       body: Column(
         children: [
           SizedBox(
-            height: size.height*0.2,
+            height: size.height * 0.2,
             child: backgroundbubbles(
               name: 'Basket',
             ),
           ),
           Container(
             padding: EdgeInsets.all(8),
-            height: size.height * 0.8,
+            height: size.height * 0.6,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(40),
-                    topRight: Radius.circular(40)),
+                    topRight: Radius.circular(40),
+                    bottomLeft: Radius.elliptical(200, 50)),
                 color: Colors.white),
             child: Column(
               children: [
                 Container(
                     margin: EdgeInsets.only(top: 5, right: 290),
                     child: IconButton(
-                      onPressed: () => mainList.currentState!.popAndPushNamed(Routes.scan),
+                      onPressed: () =>
+                          mainList.currentState!.popAndPushNamed(Routes.scan),
                       icon: Icon(Icons.arrow_back_ios_new_sharp),
                     )),
                 Expanded(
@@ -86,20 +88,23 @@ class _BasketpageState extends State<Basketpage> {
                     ),
                   ),
                 ),
-                AppButton(
-                    text: 'Proceed',
-                    fontSize: 20,
-                    textColor: Colors.white,
-                    bgColor: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    borderRadius: 30,
-                    height: 10,
-                    onTap: () {
-                      mainList.currentState!.pushNamed(Routes.payment);
-                    }),
               ],
             ),
           ),
+          SizedBox(
+            height: 40,
+          ),
+          AppButton(
+              text: 'Proceed',
+              fontSize: 20,
+              textColor: Colors.white,
+              bgColor: Colors.black,
+              fontWeight: FontWeight.bold,
+              borderRadius: 30,
+              height: 10,
+              onTap: () {
+                mainList.currentState!.pushNamed(Routes.payment);
+              })
         ],
       ),
     );
