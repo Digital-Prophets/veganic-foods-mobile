@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:veganic_foods_app/constants.dart';
+import 'package:veganic_foods_app/utils/globals.dart';
 import 'package:veganic_foods_app/utils/routes.dart';
 import 'package:veganic_foods_app/widgets/page_background.dart';
 
@@ -37,13 +38,13 @@ class _QRCodeScannerState extends State<QRCodeScanner> {
         backgroundColor: bGcolor,
         body: Column(
           children: [
-             SizedBox(
-              height: size.height*0.19,
+            SizedBox(
+              height: size.height * 0.15,
               child: PagesBackground(),
             ),
             SafeArea(
               child: Column(
-                children: [
+                children:  [
                   Container(
                     width: size.width,
                     height: size.height * 0.7,
@@ -64,7 +65,7 @@ class _QRCodeScannerState extends State<QRCodeScanner> {
                             ),
                             IconButton(
                                 onPressed: () {
-                                  Navigator.pushNamed(context, Routes.home);
+                                 mainKey.currentState!.pushReplacementNamed(Routes.home);
                                 },
                                 icon: const Icon(Icons.arrow_back_ios)),
                             const SizedBox(
@@ -88,6 +89,7 @@ class _QRCodeScannerState extends State<QRCodeScanner> {
                       ],
                     ),
                   ),
+                  Bottombar()
                 ],
               ),
             ),
@@ -141,5 +143,68 @@ class _QRCodeScannerState extends State<QRCodeScanner> {
   void dispose() {
     controller?.dispose();
     super.dispose();
+  }
+}
+
+class Bottombar extends StatelessWidget {
+  const Bottombar({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 70,
+      padding: EdgeInsets.only(bottom: 10),
+      decoration: BoxDecoration(color: Colors.white, boxShadow: [
+        BoxShadow(color: Colors.black.withOpacity(0.2), offset: Offset.zero)
+      ]),
+      child: Row( 
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+        ClipOval(
+          child: Material(
+            color: Colors.white,
+            child: IconButton(
+              icon: Icon(
+                Icons.qr_code,
+              ),
+              onPressed: () {
+                mainList.currentState!.pushReplacementNamed(Routes.scan);
+              },
+            ),
+          ),
+        ),
+        SizedBox(width:50 ,),
+                ClipOval(
+          child: Material(
+            color: Colors.white,
+            child: IconButton(
+              icon: Icon(
+                Icons.shopping_bag,
+              ),
+              onPressed: () {
+                mainList.currentState!.pushNamed(Routes.cart);
+              },
+            ),
+          ),
+        ),
+        SizedBox(width:50 ,),
+                ClipOval(
+          child: Material(
+            color: Colors.white,
+            child: IconButton(
+              icon: Icon(
+                Icons.payment,
+              ),
+              onPressed: () {
+                mainList.currentState!.pushNamed(Routes.payment);
+              },
+            ),
+          ),
+        ),
+        SizedBox(width:30 ,)
+
+
+      ]),
+    );
   }
 }

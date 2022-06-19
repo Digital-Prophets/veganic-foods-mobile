@@ -1,7 +1,12 @@
 // ignore: file_names
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:veganic_foods_app/constants.dart';
+import 'package:veganic_foods_app/screens/home/home.dart';
+import 'package:veganic_foods_app/screens/scanning_page/scan.dart';
+import 'package:veganic_foods_app/utils/globals.dart';
 import 'package:veganic_foods_app/utils/routes.dart';
 import 'package:veganic_foods_app/widgets/custom_button.dart';
 import '../../providers/cart_provider.dart';
@@ -46,7 +51,7 @@ class _PaymentListState extends State<PaymentList> {
           ),
           Column(children: [
             SizedBox(
-              height: 60,
+              height: size.height * 0.05,
             ),
             Container(
                 width: size.width,
@@ -55,12 +60,14 @@ class _PaymentListState extends State<PaymentList> {
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(40),
-                        topRight: Radius.circular(40))),
+                        topRight: Radius.circular(40),
+                        bottomLeft: Radius.elliptical(200,50 ),
+                      )),
+                      
                 child: Column(children: [
-                  const SizedBox(
-                    height: 40,
+                  SizedBox(
+                    height: size.height * 0.04,
                   ),
-
                   Container(
                     padding: const EdgeInsets.only(left: 30, top: 5),
                     child: Row(
@@ -68,7 +75,7 @@ class _PaymentListState extends State<PaymentList> {
                       children: [
                         const DefaultBackButton(),
                         const SizedBox(
-                          width: 50,
+                          width: 45,
                         ),
                         const Text(
                           'Payment methods',
@@ -139,6 +146,7 @@ class _PaymentListState extends State<PaymentList> {
                   ),
                   const divider(),
                   SizedBox(
+                    height: 50,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
@@ -147,47 +155,42 @@ class _PaymentListState extends State<PaymentList> {
                           style: TextStyle(
                               fontSize: 25, fontWeight: FontWeight.bold),
                         ),
-                        Column(
-                          children: [
-                            if (context.read<Cart>().cart.isNotEmpty)
-                              Text(
-                                // '${context.watch<Cart>().total}',
-                                '${Provider.of<Cart>(context, listen: false).total.toStringAsFixed(2)}',
-                                style: TextStyle(
-                                    fontSize: 25, fontWeight: FontWeight.bold),
-                              )
-                            else
-                              Text(
-                                'k 0.0',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 25),
-                              ),
-                          ],
-                        )
+                        if (context.read<Cart>().cart.isNotEmpty)
+                          Text(
+                            // '${context.watch<Cart>().total}',
+                            '${Provider.of<Cart>(context, listen: false).total.toStringAsFixed(2)}',
+                            style: TextStyle(
+                                fontSize: 25, fontWeight: FontWeight.bold),
+                          )
+                        else
+                          Text(
+                            'k 0.0',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 25),
+                          )
                       ],
                     ),
-                    height: 30,
                   ),
-
-                  AppButton(
-                    text: 'Proceed',
-                    fontSize: 20,
-                    textColor: Colors.white,
-                    bgColor: Colors.black,
-                    onTap: () {
-                      context.read<Cart>().clearall();
-                      Navigator.pushNamed(context, Routes.home);
-                    },
-                    fontWeight: FontWeight.bold,
-                    borderRadius: 30,
-                    height: 10,
-                  ),
-                  // ignore: prefer_const_constructors
                   SizedBox(
                     height: 20,
                   ),
                 ]))
-          ])
+          ]),
+          SizedBox(height: 55,),
+          AppButton(
+            text: 'Proceed',
+            fontSize: 20,
+            textColor: Colors.white,
+            bgColor: Colors.black,
+            onTap: () {
+              context.read<Cart>().clearall();
+              mainList.currentState!.pushNamed(Routes.scan);
+            },
+            fontWeight: FontWeight.bold,
+            borderRadius: 30,
+            height: 10,
+          ),
+          // ignore: prefer_const_constructors
         ]));
   }
 }
@@ -227,7 +230,7 @@ class RadiotileCSS extends StatelessWidget {
               children: [
                 Image.asset(
                   imagestring,
-                  height: 25,
+                  height: 35,
                 ),
                 const SizedBox(
                   width: 33,

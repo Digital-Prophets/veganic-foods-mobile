@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:veganic_foods_app/constants.dart';
 import 'package:veganic_foods_app/providers/cart_provider.dart';
+import 'package:veganic_foods_app/screens/scanning_page/scan.dart';
+import 'package:veganic_foods_app/utils/globals.dart';
 import 'package:veganic_foods_app/widgets/custom_button.dart';
 import '../../utils/routes.dart';
 import '../payment_page/components/background_eclipses.dart';
+import '../payment_page/payment.dart';
 import 'components/list_widgets.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
@@ -17,7 +21,6 @@ class Basketpage extends StatefulWidget {
 }
 
 class _BasketpageState extends State<Basketpage> {
-
   final listKey = GlobalKey<AnimatedListState>();
 
   @override
@@ -28,14 +31,14 @@ class _BasketpageState extends State<Basketpage> {
       body: Column(
         children: [
           SizedBox(
-            height: 160,
+            height: size.height*0.2,
             child: backgroundbubbles(
               name: 'Basket',
             ),
           ),
           Container(
             padding: EdgeInsets.all(8),
-            height: size.height * 0.72,
+            height: size.height * 0.8,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(40),
@@ -45,7 +48,10 @@ class _BasketpageState extends State<Basketpage> {
               children: [
                 Container(
                     margin: EdgeInsets.only(top: 5, right: 290),
-                    child: IconButton(onPressed: () => Navigator.pushNamed(context, Routes.scan), icon: Icon(Icons.arrow_back_ios_new_sharp),)),
+                    child: IconButton(
+                      onPressed: () => mainList.currentState!.popAndPushNamed(Routes.scan),
+                      icon: Icon(Icons.arrow_back_ios_new_sharp),
+                    )),
                 Expanded(
                   child: AnimatedList(
                     physics: ClampingScrollPhysics(),
@@ -89,8 +95,8 @@ class _BasketpageState extends State<Basketpage> {
                     borderRadius: 30,
                     height: 10,
                     onTap: () {
-                      Navigator.pushNamed(context, Routes.payment);
-                    }),    
+                      mainList.currentState!.pushNamed(Routes.payment);
+                    }),
               ],
             ),
           ),

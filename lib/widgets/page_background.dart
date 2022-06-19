@@ -5,33 +5,28 @@ class PagesBackground extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return SizedBox(
       child: Stack(
         children: [
           Positioned(
-              left: -14.0,
-              top: -11.0,
-              width: 70.0,
-              height: 70.0,
+              left: size.width * -0.02,
+              top: size.height * -0.01,
               child: Image.asset('assets/images/Ellipse_9.png')),
           Positioned(
-              top: 70,
-              left: 374,
+              top: size.height*0.05,
+              left: size.width*0.95,
               child: Image.asset('assets/images/Ellipse_10.png')),
-          const Positioned(
-            left: 22.0,
-            top: 84.0,
-            right: null,
-            bottom: null,
-            width: 35.0,
-            height: 35.0,
+           Positioned(
+            left: size.width * 0.07,
+            top: size.height*0.1,
             child: CircleAvatar(
               backgroundImage: AssetImage('assets/avatars/user-female.png'),
             ),
           ),
-          const Positioned(
-            left: 80.0,
-            top: 90.0,
+           Positioned(
+            left: size.width*0.2 ,
+            top:size.height*0.11,
             right: null,
             bottom: null,
             width: 52.0,

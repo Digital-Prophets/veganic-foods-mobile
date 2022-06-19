@@ -26,6 +26,7 @@ class MyApp extends StatelessWidget {
       statusBarColor: Colors.transparent,
     ));
     return GetMaterialApp(
+      key: mainKey,
       scaffoldMessengerKey: snackbarKey,
       title: 'Veganic App',
       debugShowCheckedModeBanner: false,
@@ -34,7 +35,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: LandingPage(),
+      initialRoute: Routes.home,
+      // home: LandingPage(),
       // home: Details(
       //   category: 2,
       //   description: 'stuff about food',
@@ -45,8 +47,8 @@ class MyApp extends StatelessWidget {
       //   quantity: 1,
       // ),
       routes: {
-        Routes.home: (context) =>  LandingPage(),
-        Routes.scan: (context) =>  ScanningPage(),
+        Routes.home: (context) => LandingPage(),
+        Routes.scan: (context) => ScanningPage(),
         Routes.cart: (context) => Basketpage(),
         Routes.payment: (context) => const PaymentPage()
       },
