@@ -19,7 +19,7 @@ class Bottombar extends StatelessWidget {
         SizedBox  (width: 20),
         ClipOval(
           child: Material(
-            color: Colors.white,
+            color: Colors.grey.shade100,
             child: IconButton(
               icon: Icon(
                 Icons.qr_code,
@@ -33,7 +33,7 @@ class Bottombar extends StatelessWidget {
         SizedBox(width:55 ,),
                 ClipOval(
           child: Material(
-            color: Colors.white,
+            color: Colors.grey.shade100,
             child: IconButton(
               icon: Icon(
                 Icons.shopping_bag,
@@ -47,7 +47,7 @@ class Bottombar extends StatelessWidget {
         SizedBox(width:55 ,),
                 ClipOval(
           child: Material(
-            color: Colors.white,
+            color: Colors.grey.shade100,
             child: IconButton(
               icon: Icon(
                 Icons.payment,
