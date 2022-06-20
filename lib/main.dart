@@ -9,10 +9,12 @@ import 'package:veganic_foods_app/screens/payment_page/payment.dart';
 import 'package:veganic_foods_app/screens/scanning_page/scan.dart';
 import 'package:veganic_foods_app/utils/globals.dart';
 import 'package:veganic_foods_app/utils/routes.dart';
+import 'package:veganic_foods_app/widgets/error_pages.dart';
 
 import 'screens/details_page/details.dart';
 
 void main() {
+  ErrorWidget.builder =(details) => Notfound('$details');
   runApp(MultiProvider(
     providers: [ChangeNotifierProvider(create: (_) => Cart())],
     child: MyApp(),
@@ -37,17 +39,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      // initialRoute: Routes.home,
-      // home: LandingPage(),
-      home: Details(
-        category: 2,
-        description: 'stuff about food',
-        image: '',
-        name: 'moonshine',
-        price: 40,
-        product_id: 3,
-        quantity: 1,
-      ),
+      home: PaymentPage(),
       routes: {
         Routes.home: (context) => LandingPage(),
         Routes.scan: (context) => ScanningPage(),

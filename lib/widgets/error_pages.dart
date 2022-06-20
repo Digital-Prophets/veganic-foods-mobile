@@ -3,26 +3,41 @@ import 'package:get/get.dart';
 import 'package:veganic_foods_app/widgets/custom_button.dart';
 import '../screens/scanning_page/scan.dart';
 
-Notfound(image) => Scaffold(
-      body: Stack(
-        // fit: StackFit.expand,
-        children: [
-          Image.asset(
-            image,
-            fit: BoxFit.fill,
+Notfound(String message) {
+  return Scaffold(
+    body: Stack(
+      fit: StackFit.expand,
+      children: [
+        Image.asset(
+          "assets/images/6_Error.png",
+          fit: BoxFit.cover,
+        ),
+        Container(
+          padding:
+              const EdgeInsets.only(top: 100, left: 20, right: 20, bottom: 90),
+          alignment: Alignment.bottomCenter,
+          child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              fixedSize: Size(300, 59),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+              primary: Color(0xFF6B92F2),
+              onPrimary: Colors.white,
+            ),
+            onPressed: () {
+              Get.to(ScanningPage());
+            },
+            child: Text('scan again',
+                maxLines: 3,
+                style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                )),
           ),
-          Container(
-            padding: EdgeInsets.only(left: 20, top: 600, bottom: 5),
-            child: AppButton(
-                text: 'return to scan',
-                fontSize: 15,
-                textColor: Colors.white,
-                bgColor: Colors.green.shade300,
-                onTap: () => Get.to(ScanningPage()),
-                fontWeight: FontWeight.normal,
-                borderRadius: 40,
-                height: 24),
-          )
-        ],
-      ),
-    );
+        )
+      ],
+    ),
+  );
+}

@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:http/http.dart' as http;
+import 'package:veganic_foods_app/constants.dart';
 import 'package:veganic_foods_app/screens/details_page/details.dart';
 import 'package:veganic_foods_app/widgets/error_pages.dart';
 
@@ -31,7 +32,7 @@ class _HttppState extends State<Httpp> {
                     child: CircularProgressIndicator(),
                   );
                 case ConnectionState.done:
-                  SchedulerBinding.instance!.addPostFrameCallback((_) {
+                  SchedulerBinding.instance?.addPostFrameCallback((_) {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -47,19 +48,28 @@ class _HttppState extends State<Httpp> {
                   });
                   break;
                 case ConnectionState.none:
-                  return Notfound(
-                      'something went wrong, please check your internet connection');
+                  throw Exception('couldnt get item');
                 default:
-                  return Notfound('oops somthing went wrong');
+                  return Center(
+                    child: Text('error'),
+                  );
               }
             }
-            return const Center(child: CircularProgressIndicator());
+            return Container(
+              decoration: BoxDecoration(color: bGcolor),
+              child: Center(
+                  child: CircularProgressIndicator(
+                strokeWidth: 6,
+                backgroundColor: bGcolor,
+                valueColor: AlwaysStoppedAnimation<Color>(Colors.black),
+              )),
+            );
           }),
     );
   }
 }
 
-const String postUrl = "http://192.168.40.82:8000/products";
+const String postUrl = "http://192.168.137.1:8007/api/product";
 Future<Product> _getdata(String? id) async {
   String url = postUrl + '/$id';
   var res = await http.get(Uri.parse(url));
@@ -67,8 +77,12 @@ Future<Product> _getdata(String? id) async {
 //==================================================================
     Map<String, dynamic> productMap = jsonDecode(res.body);
     var products = Product.fromJson(productMap);
+    print(products.toJson());
     return products;
 //====================================================================
+  }
+  if (res.statusCode == 404) {
+    throw 'errror';
   } else {
     return Notfound('please check your internet connection');
   }
