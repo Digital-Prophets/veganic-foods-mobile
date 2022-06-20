@@ -104,7 +104,7 @@ class _PaymentListState extends State<PaymentList> {
                     ),
                   ),
                   SizedBox(
-                    height: 40,
+                    height: 20,
                   ),
                   RadioListTile<Paymentmethod>(
                     contentPadding: const EdgeInsets.only(left: 40),

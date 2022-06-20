@@ -66,7 +66,7 @@ class _QRCodeScannerState extends State<QRCodeScanner> {
                             ),
                             IconButton(
                                 onPressed: () {
-                                 mainKey.currentState!.pushReplacementNamed(Routes.home);
+                                 Navigator.pushNamed(context,Routes.home);
                                 },
                                 icon: const Icon(Icons.arrow_back_ios)),
                             const SizedBox(
