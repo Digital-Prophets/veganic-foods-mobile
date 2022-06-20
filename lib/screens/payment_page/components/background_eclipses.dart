@@ -9,25 +9,27 @@ class backgroundbubbles extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return SizedBox(
       child: Container(
+        height: 150,
         child: Stack(
           children: [
+          Positioned( 
+              left: size.width*0.0,
+              top: size.height * 0,
+              child: Image.asset('assets/images/Ellipse_9.png')),
+          Positioned(
+              top: size.height*0.05,
+              left: size.width*0.95,
+              child: Image.asset('assets/images/Ellipse_10.png')),
+          Positioned(
+              top: size.height*0.07,
+              left:size.width*0.6,
+              child: Image.asset('assets/images/Ellipse_5.png')),
             Positioned(
-                top: -5,
-                left: -14,
-                child: Image.asset('assets/images/Ellipse 3 (1).png')),
-            Positioned(
-                top: 70,
-                left: 374,
-                child: Image.asset('assets/images/Ellipse 4 (1).png')),
-            Positioned(
-                top: 50,
-                left: 100,
-                child: Image.asset('assets/images/Ellipse_5.png')),
-            Positioned(
-                top: 90,
-                left: 30,
+            left:size.width*0.1,
+            top: size.height*0.13,
                 child: Text(
                   name,
                   style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
@@ -35,7 +37,6 @@ class backgroundbubbles extends StatelessWidget {
           ],
         ),
       ),
-      height: 130,
     );
   }
 }

@@ -9,9 +9,9 @@ class PagesBackground extends StatelessWidget {
     return SizedBox(
       child: Stack(
         children: [
-          Positioned(
-              left: size.width * -0.02,
-              top: size.height * -0.01,
+          Positioned( 
+              left: size.width*0.0,
+              top: size.height * 0,
               child: Image.asset('assets/images/Ellipse_9.png')),
           Positioned(
               top: size.height*0.05,
@@ -29,28 +29,21 @@ class PagesBackground extends StatelessWidget {
             top:size.height*0.11,
             right: null,
             bottom: null,
-            width: 52.0,
-            height: 20.0,
             child: Text('Hi User', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),),
           ),
-          const Positioned(
-            left: 80.0,
-            top: 120.0,
+           Positioned(
+            left:size.width*0.19,
+            top: size.height*0.13,
             right: null,
             bottom: null,
-            width: 241.0,
-            height: 20.0,
-            child: Text('What would like to order today?', style: TextStyle(fontSize: 16)),
+            child: Text('What would like to order today?', style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal)),
           ),
           Positioned(
-              top: 26,
-              left:239,
-              width: 13.0,
-              height: 13.0,
+              top: size.height*0.07,
+              left:size.width*0.6,
               child: Image.asset('assets/images/Ellipse_5.png')),
                   ],
       ),
-      height: 130,
     );
   }
 }

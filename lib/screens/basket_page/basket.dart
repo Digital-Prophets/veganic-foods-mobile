@@ -38,60 +38,62 @@ class _BasketpageState extends State<Basketpage> {
             ),
           ),
           Container(
-            padding: EdgeInsets.all(8),
-            height: size.height * 0.6,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(40),
-                    topRight: Radius.circular(40),
-                    bottomLeft: Radius.elliptical(200, 50)),
-                color: Colors.white),
-            child: Column(
-              children: [
-                Container(
-                    margin: EdgeInsets.only(top: 5, right: 290),
-                    child: IconButton(
-                      onPressed: () =>
-                          Navigator.pushNamed(context,Routes.scan),
-                      icon: Icon(Icons.arrow_back_ios_new_sharp),
-                    )),
-                Expanded(
-                  child: AnimatedList(
-                    physics: ClampingScrollPhysics(),
-                    shrinkWrap: true,
-                    key: listKey,
-                    initialItemCount: context.read<Cart>().cart.length,
-                    itemBuilder: (BuildContext context, int index,
-                            Animation<double> animation) =>
-                        Slidable(
-                      endActionPane: ActionPane(
-                          key: ValueKey(context.read<Cart>().cart[index]),
-                          motion: const ScrollMotion(),
-                          children: [
-                            SlidableAction(
-                              key: ValueKey(
-                                  context.read<Cart>().cart[index].product_id),
-                              autoClose: true,
-                              flex: 2,
-                              onPressed: (context) => {
-                                removeitem(index),
-                                context.read<Cart>().deletefromcart(index),
-                              },
-                              backgroundColor: Color(0xFFEF5350),
-                              icon: Icons.delete,
-                              label: 'delete',
-                            ),
-                          ]),
-                      child: ListWidget(
-                        animation: animation,
-                        product: context.read<Cart>().cart[index],
+              padding: EdgeInsets.all(8),
+              height: size.height * 0.6,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(40),
+                      topRight: Radius.circular(40),
+                      bottomLeft: Radius.elliptical(200, 50)),
+                  color: Colors.white),
+              child: Column(
+                children: [
+
+                  Container(
+                      margin: EdgeInsets.only(top: 5, right: 290),
+                      child: IconButton(
+                        onPressed: () =>
+                            Navigator.pushNamed(context,Routes.scan),
+                        icon: Icon(Icons.arrow_back_ios_new_sharp),
+                      )),
+                  Expanded(
+                    child: AnimatedList(
+                      physics: ClampingScrollPhysics(),
+                      shrinkWrap: true,
+                      key: listKey,
+                      initialItemCount: context.read<Cart>().cart.length,
+                      itemBuilder: (BuildContext context, int index,
+                              Animation<double> animation) =>
+                          Slidable(
+                        endActionPane: ActionPane(
+                            key: ValueKey(context.read<Cart>().cart[index]),
+                            motion: const ScrollMotion(),
+                            children: [
+                              SlidableAction(
+                                key: ValueKey(
+                                    context.read<Cart>().cart[index].product_id),
+                                autoClose: true,
+                                flex: 2,
+                                onPressed: (context) => {
+                                  removeitem(index),
+                                  context.read<Cart>().deletefromcart(index),
+                                },
+                                backgroundColor: Color(0xFFEF5350),
+                                icon: Icons.delete,
+                                label: 'delete',
+                              ),
+                            ]),
+                        child: ListWidget(
+                          animation: animation,
+                          product: context.read<Cart>().cart[index],
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
+
           SizedBox(
             height: 7,
           ),

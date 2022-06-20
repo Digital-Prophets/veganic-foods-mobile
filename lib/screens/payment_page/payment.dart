@@ -49,7 +49,6 @@ class _PaymentListState extends State<PaymentList> {
   Paymentmethod? _init = Paymentmethod.mobile_money;
   @override
   Widget build(BuildContext context) {
-    var method = _init;
     Size size = MediaQuery.of(context).size; //total height and width of screen
 
     return Scaffold(
@@ -90,7 +89,7 @@ class _PaymentListState extends State<PaymentList> {
                             color: Colors.black,
                           ),
                           onPressed: () {
-                            Get.to(ScanningPage());
+                            Navigator.pushNamed(context, Routes.cart);
                           },
                         ),
                         const SizedBox(
@@ -105,7 +104,7 @@ class _PaymentListState extends State<PaymentList> {
                     ),
                   ),
                   SizedBox(
-                    height: 10,
+                    height: 40,
                   ),
                   RadioListTile<Paymentmethod>(
                     contentPadding: const EdgeInsets.only(left: 40),
@@ -178,7 +177,16 @@ class _PaymentListState extends State<PaymentList> {
                     ),
                   ),
 
-                  AppButton(
+                  SizedBox(
+                    height: 20,
+                  ),
+                ]))
+          ]),
+          SizedBox(
+            height: size.height * 0.03,
+          ),
+
+                    AppButton(
                     text: 'Proceed',
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -231,29 +239,7 @@ class _PaymentListState extends State<PaymentList> {
                       }
                     },
                   ),
-                  // ignore: prefer_const_constructors
-                  SizedBox(
-                    height: 20,
-                  ),
-                ]))
-          ]),
-          SizedBox(height: 30,),
-          AppButton(
-            text: 'Proceed',
-            fontSize: 20,
-            textColor: Colors.white,
-            bgColor: Colors.black,
-            onTap: () {
-              context.read<Cart>().clearall();
-              Navigator.pushNamed(context,Routes.scan);
-            },
-            fontWeight: FontWeight.bold,
-            borderRadius: 30,
-            height: 10,
-          ),
-          SizedBox(
-            height: 20,
-          ),
+          SizedBox(height: size.height*0.035,),
         Bottombar()
           // ignore: prefer_const_constructors
         ]));

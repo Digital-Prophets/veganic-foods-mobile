@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: PaymentPage(),
+      home: LandingPage(),
       routes: {
         Routes.home: (context) => LandingPage(),
         Routes.scan: (context) => ScanningPage(),
