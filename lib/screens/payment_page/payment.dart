@@ -8,6 +8,7 @@ import 'package:veganic_foods_app/screens/home/home.dart';
 import 'package:veganic_foods_app/screens/scanning_page/scan.dart';
 import 'package:veganic_foods_app/utils/globals.dart';
 import 'package:veganic_foods_app/utils/routes.dart';
+import 'package:veganic_foods_app/widgets/bottom_nav_bar.dart';
 import 'package:veganic_foods_app/widgets/custom_button.dart';
 import '../../providers/cart_provider.dart';
 import '../../widgets/default_back_button.dart';
@@ -176,7 +177,7 @@ class _PaymentListState extends State<PaymentList> {
                   ),
                 ]))
           ]),
-          SizedBox(height: 55,),
+          SizedBox(height: 30,),
           AppButton(
             text: 'Proceed',
             fontSize: 20,
@@ -184,12 +185,16 @@ class _PaymentListState extends State<PaymentList> {
             bgColor: Colors.black,
             onTap: () {
               context.read<Cart>().clearall();
-              mainList.currentState!.pushNamed(Routes.scan);
+              Navigator.pushNamed(context,Routes.scan);
             },
             fontWeight: FontWeight.bold,
             borderRadius: 30,
             height: 10,
           ),
+          SizedBox(
+            height: 20,
+          ),
+        Bottombar()
           // ignore: prefer_const_constructors
         ]));
   }

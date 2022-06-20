@@ -5,6 +5,7 @@ import 'package:veganic_foods_app/constants.dart';
 import 'package:veganic_foods_app/providers/cart_provider.dart';
 import 'package:veganic_foods_app/screens/scanning_page/scan.dart';
 import 'package:veganic_foods_app/utils/globals.dart';
+import 'package:veganic_foods_app/widgets/bottom_nav_bar.dart';
 import 'package:veganic_foods_app/widgets/custom_button.dart';
 import '../../utils/routes.dart';
 import '../payment_page/components/background_eclipses.dart';
@@ -51,7 +52,7 @@ class _BasketpageState extends State<Basketpage> {
                     margin: EdgeInsets.only(top: 5, right: 290),
                     child: IconButton(
                       onPressed: () =>
-                          mainList.currentState!.popAndPushNamed(Routes.scan),
+                          Navigator.pushNamed(context,Routes.scan),
                       icon: Icon(Icons.arrow_back_ios_new_sharp),
                     )),
                 Expanded(
@@ -92,7 +93,7 @@ class _BasketpageState extends State<Basketpage> {
             ),
           ),
           SizedBox(
-            height: 40,
+            height: 7,
           ),
           AppButton(
               text: 'Proceed',
@@ -103,8 +104,13 @@ class _BasketpageState extends State<Basketpage> {
               borderRadius: 30,
               height: 10,
               onTap: () {
-                mainList.currentState!.pushNamed(Routes.payment);
-              })
+                Navigator.pushNamed(context,Routes.payment);
+              }),
+              SizedBox(
+                height: 7,
+              ),
+          Bottombar()
+
         ],
       ),
     );

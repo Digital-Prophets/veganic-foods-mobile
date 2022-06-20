@@ -10,6 +10,8 @@ import 'package:veganic_foods_app/screens/scanning_page/scan.dart';
 import 'package:veganic_foods_app/utils/globals.dart';
 import 'package:veganic_foods_app/utils/routes.dart';
 
+import 'screens/details_page/details.dart';
+
 void main() {
   runApp(MultiProvider(
     providers: [ChangeNotifierProvider(create: (_) => Cart())],
@@ -35,17 +37,17 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      initialRoute: Routes.home,
+      // initialRoute: Routes.home,
       // home: LandingPage(),
-      // home: Details(
-      //   category: 2,
-      //   description: 'stuff about food',
-      //   image: '',
-      //   name: 'moonshine',
-      //   price: 40,
-      //   product_id: 3,
-      //   quantity: 1,
-      // ),
+      home: Details(
+        category: 2,
+        description: 'stuff about food',
+        image: '',
+        name: 'moonshine',
+        price: 40,
+        product_id: 3,
+        quantity: 1,
+      ),
       routes: {
         Routes.home: (context) => LandingPage(),
         Routes.scan: (context) => ScanningPage(),

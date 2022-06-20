@@ -7,6 +7,7 @@ import 'package:veganic_foods_app/utils/globals.dart';
 import 'package:veganic_foods_app/utils/routes.dart';
 import 'package:veganic_foods_app/widgets/page_background.dart';
 
+import '../../../widgets/bottom_nav_bar.dart';
 import 'https_service.dart';
 
 class QRCodeScanner extends StatefulWidget {
@@ -146,65 +147,3 @@ class _QRCodeScannerState extends State<QRCodeScanner> {
   }
 }
 
-class Bottombar extends StatelessWidget {
-  const Bottombar({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 70,
-      padding: EdgeInsets.only(bottom: 10),
-      decoration: BoxDecoration(color: Colors.white, boxShadow: [
-        BoxShadow(color: Colors.black.withOpacity(0.2), offset: Offset.zero)
-      ]),
-      child: Row( 
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-        ClipOval(
-          child: Material(
-            color: Colors.white,
-            child: IconButton(
-              icon: Icon(
-                Icons.qr_code,
-              ),
-              onPressed: () {
-                mainList.currentState!.pushReplacementNamed(Routes.scan);
-              },
-            ),
-          ),
-        ),
-        SizedBox(width:50 ,),
-                ClipOval(
-          child: Material(
-            color: Colors.white,
-            child: IconButton(
-              icon: Icon(
-                Icons.shopping_bag,
-              ),
-              onPressed: () {
-                mainList.currentState!.pushNamed(Routes.cart);
-              },
-            ),
-          ),
-        ),
-        SizedBox(width:50 ,),
-                ClipOval(
-          child: Material(
-            color: Colors.white,
-            child: IconButton(
-              icon: Icon(
-                Icons.payment,
-              ),
-              onPressed: () {
-                mainList.currentState!.pushNamed(Routes.payment);
-              },
-            ),
-          ),
-        ),
-        SizedBox(width:30 ,)
-
-
-      ]),
-    );
-  }
-}

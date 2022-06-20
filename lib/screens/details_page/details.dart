@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:veganic_foods_app/constants.dart';
 import 'package:veganic_foods_app/providers/cart_provider.dart';
+import 'package:veganic_foods_app/screens/basket_page/basket.dart';
 import 'package:veganic_foods_app/screens/details_page/components/product_class.dart';
 import 'package:veganic_foods_app/utils/routes.dart';
 import 'package:veganic_foods_app/widgets/custom_button.dart';
@@ -385,8 +386,7 @@ class _DetailsState extends State<Details> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => Notfound(
-                                    'assets/images/1_No Connection.png')));
+                                builder: (context) => Basketpage()));
                         // Navigator.pushNamed(context, Routes.cart);
                       },
                       fontWeight: FontWeight.normal,
