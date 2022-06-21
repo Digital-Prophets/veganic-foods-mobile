@@ -6,7 +6,9 @@ import 'package:veganic_foods_app/constants.dart';
 import 'package:veganic_foods_app/providers/cart_provider.dart';
 import 'package:veganic_foods_app/screens/basket_page/basket.dart';
 import 'package:veganic_foods_app/screens/details_page/components/product_class.dart';
+import 'package:veganic_foods_app/screens/payment_page/components/background_eclipses.dart';
 import 'package:veganic_foods_app/utils/routes.dart';
+import 'package:veganic_foods_app/widgets/bottom_nav_bar.dart';
 import 'package:veganic_foods_app/widgets/custom_button.dart';
 import 'package:veganic_foods_app/widgets/error_pages.dart';
 
@@ -88,6 +90,7 @@ class _DetailsState extends State<Details> {
     Size size = MediaQuery.of(context).size;
     var init_price = widget.price;
     return Scaffold(
+      bottomNavigationBar: Bottombar(),
         body: Container(
       decoration: BoxDecoration(
           color: bGcolor,
@@ -96,12 +99,11 @@ class _DetailsState extends State<Details> {
       child: Stack(children: [
         Column(
           children: [
-            const SizedBox(
-              height: 170,
-            ),
+            backgroundbubbles(name: '',),
+            SizedBox(height: size.height * 0.06),
             Container(
               width: size.width,
-              height: size.height * 0.721,
+              height: size.height * 0.67,
               decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
@@ -347,7 +349,7 @@ class _DetailsState extends State<Details> {
                                     )),
                               ],
                             ),
-                            const SizedBox(
+                             SizedBox(
                               width: 50,
                             ),
                             Container(
@@ -396,7 +398,7 @@ class _DetailsState extends State<Details> {
           ],
         ),
         Align(
-          alignment: const Alignment(-0.6, -0.58),
+          alignment: const Alignment(-0.6, -0.5),
           child: Container(
               decoration: const BoxDecoration(
                   boxShadow: [
