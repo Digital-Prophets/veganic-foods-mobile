@@ -54,6 +54,7 @@ class _PaymentListState extends State<PaymentList> {
     return Scaffold(
         resizeToAvoidBottomInset: false,
         backgroundColor: bGcolor,
+        bottomNavigationBar: Bottombar(),
         body: Column(children: [
           // ignore: prefer_const_constructors
           backgroundbubbles(
@@ -240,7 +241,7 @@ class _PaymentListState extends State<PaymentList> {
                     },
                   ),
           SizedBox(height: size.height*0.035,),
-        Bottombar()
+        
           // ignore: prefer_const_constructors
         ]));
   }

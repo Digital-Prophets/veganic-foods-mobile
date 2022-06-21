@@ -28,6 +28,7 @@ class _BasketpageState extends State<Basketpage> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
+      bottomNavigationBar: Bottombar(),
       backgroundColor: bGcolor,
       body: Column(
         children: [
@@ -111,8 +112,6 @@ class _BasketpageState extends State<Basketpage> {
               SizedBox(
                 height: 7,
               ),
-          Bottombar()
-
         ],
       ),
     );

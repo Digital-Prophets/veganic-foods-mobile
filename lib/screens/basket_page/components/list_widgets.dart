@@ -42,7 +42,7 @@ class _ListWidgetState extends State<ListWidget> {
     return Column(
       children: [
         Container(
-            margin: EdgeInsets.all(8),
+            margin: EdgeInsets.all(12),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
               color: Colors.white,
