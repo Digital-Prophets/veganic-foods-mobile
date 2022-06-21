@@ -395,7 +395,7 @@ class divider extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Divider(
       thickness: 1,
-      indent: 50,
+      indent: 50, 
       endIndent: 50,
     );
   }
