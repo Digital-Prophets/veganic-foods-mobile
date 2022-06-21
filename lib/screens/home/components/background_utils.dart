@@ -73,7 +73,7 @@ class Background extends StatelessWidget {
                 "assets/images/landing_topping.png",
                 fit: BoxFit.cover,
               )),
-          Positioned(bottom: 0, left: 20, right: 20, child: child),
+          Positioned(bottom: size.height*0, left: size.width*0.1, right: size.width*0.1, child: child),
         ],
       ),
     );

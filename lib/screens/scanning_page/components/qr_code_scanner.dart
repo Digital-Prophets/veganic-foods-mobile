@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:veganic_foods_app/constants.dart';
-import 'package:veganic_foods_app/utils/globals.dart';
 import 'package:veganic_foods_app/utils/routes.dart';
 import 'package:veganic_foods_app/widgets/page_background.dart';
 
@@ -36,6 +35,7 @@ class _QRCodeScannerState extends State<QRCodeScanner> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
+      bottomNavigationBar: Bottombar(),
         backgroundColor: bGcolor,
         body: Column(
           children: [
@@ -90,7 +90,6 @@ class _QRCodeScannerState extends State<QRCodeScanner> {
                       ],
                     ),
                   ),
-                  Bottombar()
                 ],
               ),
             ),
