@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:veganic_foods_app/constants.dart';
 
 class Background extends StatelessWidget {
   final Widget child;
@@ -67,13 +66,13 @@ class Background extends StatelessWidget {
                 fit: BoxFit.cover,
               )),
           Positioned(
-              top: size.height * 0.4,
+              top: size.height * 0.47,
               left: size.width * 0.15,
               child: Image.asset(
                 "assets/images/landing_topping.png",
                 fit: BoxFit.cover,
               )),
-          Positioned(bottom: size.height*0.06, left: size.width*0.1, right: size.width*0.1, child: child),
+          Positioned(bottom: size.height*0.02, left: size.width*0.1, right: size.width*0.1, child: child),
         ],
       ),
     );
