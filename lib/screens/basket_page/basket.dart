@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:veganic_foods_app/constants.dart';
 import 'package:veganic_foods_app/providers/cart_provider.dart';
-import 'package:veganic_foods_app/screens/scanning_page/scan.dart';
-import 'package:veganic_foods_app/utils/globals.dart';
 import 'package:veganic_foods_app/widgets/bottom_nav_bar.dart';
 import 'package:veganic_foods_app/widgets/custom_button.dart';
 import '../../utils/routes.dart';
 import '../payment_page/components/background_eclipses.dart';
-import '../payment_page/payment.dart';
 import 'components/list_widgets.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 

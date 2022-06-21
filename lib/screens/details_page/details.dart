@@ -383,11 +383,9 @@ class _DetailsState extends State<Details> {
                       onTap: () {
                         context.read<Cart>().addtoCart(prod);
                         print(prod.price);
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => Basketpage()));
-                        // Navigator.pushNamed(context, Routes.cart);
+                        Navigator.pushNamed(context,
+                           Routes.cart
+                          );
                       },
                       fontWeight: FontWeight.normal,
                       borderRadius: 40,
