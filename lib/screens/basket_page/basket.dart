@@ -38,14 +38,27 @@ class _BasketpageState extends State<Basketpage> {
               name: 'Basket',
             ),
           ),
+          
+          if (context.read<Cart>().cart.isEmpty)
+            Center(
+              child: Container(
+                child: Column(
+                  children: [
+                    SizedBox(height: 80,),
+                    Image.asset('assets/images/empty-cart-yellow.png', height: size.height * 0.4),
+                  ],
+                ),
+              ),
+            ),
+          if (context.read<Cart>().cart.isNotEmpty)
           Container(
               padding: EdgeInsets.all(8),
-              height: size.height * 0.6,
+              height: size.height * 0.712,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(40),
                       topRight: Radius.circular(40),
-                      bottomLeft: Radius.elliptical(200, 50)),
+                      ),
                   color: Colors.white),
               child: Column(
                 children: [
@@ -91,13 +104,6 @@ class _BasketpageState extends State<Basketpage> {
                       ),
                     ),
                   ),
-                ],
-              ),
-            ),
-
-          SizedBox(
-            height: 7,
-          ),
           AppButton(
               text: 'Proceed',
               fontSize: 20,
@@ -112,6 +118,10 @@ class _BasketpageState extends State<Basketpage> {
               SizedBox(
                 height: 7,
               ),
+                ],
+              ),
+            ),
+
         ],
       ),
     );

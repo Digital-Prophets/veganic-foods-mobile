@@ -62,7 +62,7 @@ class _PaymentListState extends State<PaymentList> {
           ),
           Column(children: [
             SizedBox(
-              height: size.height * 0.05,
+              height: size.height * 0.08,
             ),
             Container(
                 width: size.width,
@@ -70,11 +70,10 @@ class _PaymentListState extends State<PaymentList> {
                 decoration: const BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(40),
-                        topRight: Radius.circular(40),
-                        bottomLeft: Radius.elliptical(200,50 ),
-                      )),
-                      
+                      topLeft: Radius.circular(40),
+                      topRight: Radius.circular(40),
+                      // bottomLeft: Radius.elliptical(200,50 ),
+                    )),
                 child: Column(children: [
                   SizedBox(
                     height: size.height * 0.04,
@@ -94,18 +93,18 @@ class _PaymentListState extends State<PaymentList> {
                           },
                         ),
                         const SizedBox(
-                          width: 45,
+                          width: 40,
                         ),
                         const Text(
                           'Payment methods',
                           style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
+                              fontSize: 23, fontWeight: FontWeight.bold),
                         )
                       ],
                     ),
                   ),
                   SizedBox(
-                    height: 20,
+                    height: 40,
                   ),
                   RadioListTile<Paymentmethod>(
                     contentPadding: const EdgeInsets.only(left: 40),
@@ -121,6 +120,9 @@ class _PaymentListState extends State<PaymentList> {
                     selected: false,
                   ),
                   const divider(),
+                  SizedBox(
+                    height: 20,
+                  ),
                   RadioListTile<Paymentmethod>(
                     contentPadding: const EdgeInsets.only(left: 40),
                     value: Paymentmethod.visa,
@@ -136,6 +138,9 @@ class _PaymentListState extends State<PaymentList> {
                     selected: false,
                   ),
                   const divider(),
+                  SizedBox(
+                    height: 20,
+                  ),
                   RadioListTile<Paymentmethod>(
                     contentPadding: const EdgeInsets.only(left: 40),
                     value: Paymentmethod.bank_transfer,
@@ -152,42 +157,36 @@ class _PaymentListState extends State<PaymentList> {
                   ),
                   const divider(),
                   SizedBox(
-                    height: 50,
+                    height: 20,
+                  ),
+                  SizedBox(
+                    height: 30,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Text(
                           'Total',
                           style: TextStyle(
-                              fontSize: 25, fontWeight: FontWeight.bold),
+                              fontSize: 30, fontWeight: FontWeight.bold),
                         ),
                         if (context.read<Cart>().cart.isNotEmpty)
                           Text(
                             // '${context.watch<Cart>().total}',
                             '${Provider.of<Cart>(context, listen: false).total.toStringAsFixed(2)}',
                             style: TextStyle(
-                                fontSize: 25, fontWeight: FontWeight.bold),
+                                fontSize: 30, fontWeight: FontWeight.bold),
                           )
                         else
                           Text(
                             'k 0.0',
                             style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 25),
+                                fontWeight: FontWeight.bold, fontSize: 30),
                           )
                       ],
                     ),
                   ),
-
-                  SizedBox(
-                    height: 20,
-                  ),
-                ]))
-          ]),
-          SizedBox(
-            height: size.height * 0.03,
-          ),
-
-                    AppButton(
+                  SizedBox(height: 10),
+                  AppButton(
                     text: 'Proceed',
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -240,8 +239,8 @@ class _PaymentListState extends State<PaymentList> {
                       }
                     },
                   ),
-          SizedBox(height: size.height*0.035,),
-        
+                ]))
+          ]),
           // ignore: prefer_const_constructors
         ]));
   }
@@ -395,7 +394,7 @@ class divider extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Divider(
       thickness: 1,
-      indent: 50, 
+      indent: 50,
       endIndent: 50,
     );
   }
