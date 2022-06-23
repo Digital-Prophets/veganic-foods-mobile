@@ -29,9 +29,10 @@ class _BasketpageState extends State<Basketpage> {
       body: Column(
         children: [
           SizedBox(
-            height: size.height * 0.2,
+            height: size.height * 0.198,
             child: backgroundbubbles(
               name: 'Basket',
+              height:0,
             ),
           ),
           
@@ -39,6 +40,7 @@ class _BasketpageState extends State<Basketpage> {
             Center(
               child: Container(
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     SizedBox(height: 80,),
                     Image.asset('assets/images/empty-cart-yellow.png', height: size.height * 0.4),
@@ -60,7 +62,7 @@ class _BasketpageState extends State<Basketpage> {
                 children: [
 
                   Container(
-                      margin: EdgeInsets.only(top: 5, right: 290),
+                      margin: EdgeInsets.only(top: size.height * 0.02, right: size.width * 0.7),
                       child: IconButton(
                         onPressed: () =>
                             Navigator.pushNamed(context,Routes.scan),
@@ -112,7 +114,7 @@ class _BasketpageState extends State<Basketpage> {
                 Navigator.pushNamed(context,Routes.payment);
               }),
               SizedBox(
-                height: 7,
+                height: size.height * 0.006,
               ),
                 ],
               ),

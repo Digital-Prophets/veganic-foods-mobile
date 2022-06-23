@@ -5,16 +5,7 @@ import 'package:short_uuids/short_uuids.dart';
 import 'package:veganic_foods_app/screens/details_page/components/product_class.dart';
 import 'package:http/http.dart' as http;
 import '../../../providers/cart_provider.dart';
-import 'package:flutter_sms/flutter_sms.dart';
 
-void _sendSMS(String message, String phoneNumber) async {
-  final String _result =
-      await sendSMS(message: message, recipients: [phoneNumber])
-          .catchError((onError) {
-    print(onError);
-  });
-  print(_result);
-}
 
 var id = ShortUuid().generate();
 List<dynamic> cart = [];

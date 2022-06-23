@@ -1,6 +1,5 @@
-// ignore: file_names
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:veganic_foods_app/constants.dart';
@@ -10,8 +9,6 @@ import 'package:veganic_foods_app/widgets/custom_button.dart';
 import '../../providers/cart_provider.dart';
 import '../../utils/routes.dart';
 import '../../widgets/bottom_nav_bar.dart';
-import '../../widgets/default_back_button.dart';
-import '../scanning_page/scan.dart';
 import 'components/background_eclipses.dart';
 
 class PaymentPage extends StatefulWidget {
@@ -49,200 +46,227 @@ class _PaymentListState extends State<PaymentList> {
   Paymentmethod? _init = Paymentmethod.mobile_money;
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size; //total height and width of screen
+    return LayoutBuilder(builder: ((context, constraints) {
+      final width = constraints.maxWidth;
+      final height = constraints.maxHeight;
+      return SafeArea(
+        top: false,
+        child: Scaffold(
+            extendBody: true,
+            resizeToAvoidBottomInset: false,
+            backgroundColor: bGcolor,
+            bottomNavigationBar: Bottombar(),
+            body: SafeArea(
+              top: false,
+              child:
+                  Column(mainAxisAlignment: MainAxisAlignment.end, children: [
+                // ignore: prefer_const_constructors
+                backgroundbubbles(
+                  // height: size.height*0.1719.h,
+                  height: height * 0.215,
+                  name: '',
+                ),
 
-    return Scaffold(
-        resizeToAvoidBottomInset: false,
-        backgroundColor: bGcolor,
-        bottomNavigationBar: Bottombar(),
-        body: Column(children: [
-          // ignore: prefer_const_constructors
-          backgroundbubbles(
-            name: 'Payment',
-          ),
-          Column(children: [
-            SizedBox(
-              height: size.height * 0.08,
-            ),
-            Container(
-                width: size.width,
-                padding: const EdgeInsets.all(0),
-                decoration: const BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(40),
-                      topRight: Radius.circular(40),
-                      // bottomLeft: Radius.elliptical(200,50 ),
-                    )),
-                child: Column(children: [
+                Column(children: [
+                  Container(
+                    padding: EdgeInsets.only(left: 40),
+                    alignment: Alignment.topLeft,
+                    child: Text(
+                      'Payment',
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+                    ),
+                  ),
                   SizedBox(
-                    height: size.height * 0.04,
+                    height: height * 0.04,
                   ),
                   Container(
-                    padding: const EdgeInsets.only(left: 30, top: 5),
-                    child: Row(
-                      // ignore: prefer_const_literals_to_create_immutables
-                      children: [
-                        IconButton(
-                          icon: Icon(
-                            Icons.arrow_back,
-                            color: Colors.black,
+                      width: width.w,
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(40),
+                            topRight: Radius.circular(40),
+                            // bottomLeft: Radius.elliptical(200,50 ),
+                          )),
+                      child: Column(children: [
+                        SizedBox(
+                          height: height * 0.02,
+                        ),
+                        Container(
+                          padding:
+                              EdgeInsets.only(left: 30, top: height * 0.01),
+                          child: Row(
+                            // ignore: prefer_const_literals_to_create_immutables
+                            children: [
+                              IconButton(
+                                icon: Icon(
+                                  Icons.arrow_back,
+                                  color: Colors.black,
+                                ),
+                                onPressed: () {
+                                  Navigator.pushNamed(context, Routes.cart);
+                                },
+                              ),
+                              SizedBox(
+                                width: width * 0.08,
+                              ),
+                              Text(
+                                'Payment methods',
+                                style: TextStyle(
+                                    fontSize: 23, fontWeight: FontWeight.bold),
+                              )
+                            ],
                           ),
-                          onPressed: () {
-                            Navigator.pushNamed(context, Routes.cart);
+                        ),
+                        SizedBox(
+                          height: height * 0.03,
+                        ),
+                        RadioListTile<Paymentmethod>(
+                          contentPadding: EdgeInsets.only(left: 40),
+                          value: Paymentmethod.mobile_money,
+                          groupValue: _init,
+                          onChanged: (Paymentmethod? value) =>
+                              setState(() => {_init = value}),
+                          activeColor: Colors.deepPurple[500],
+                          title: RadiotileCSS(
+                            imagestring: 'assets/icons/mbilemoney.png',
+                            text: 'Mobile Money',
+                          ),
+                          selected: false,
+                        ),
+                        divider(),
+                        SizedBox(
+                          height: height * 0.03,
+                        ),
+                        RadioListTile<Paymentmethod>(
+                          contentPadding: EdgeInsets.only(left: 40),
+                          value: Paymentmethod.visa,
+                          groupValue: _init,
+                          onChanged: (Paymentmethod? value) =>
+                              setState(() => {_init = value}),
+                          activeColor: Colors.deepPurple[500],
+                          title: RadiotileCSS(
+                            imagestring:
+                                'assets/icons/3069706_circle_payment_round icon_visa_icon.png',
+                            text: 'Visa',
+                          ),
+                          selected: false,
+                        ),
+                        divider(),
+                        SizedBox(
+                          height: height * 0.03,
+                        ),
+                        RadioListTile<Paymentmethod>(
+                          contentPadding: EdgeInsets.only(left: 40),
+                          value: Paymentmethod.bank_transfer,
+                          groupValue: _init,
+                          onChanged: (Paymentmethod? value) =>
+                              setState(() => {_init = value}),
+                          activeColor: Colors.deepPurple[500],
+                          title: RadiotileCSS(
+                            imagestring:
+                                'assets/icons/213750_bank_card_checkout_online shopping_payment method_icon.png',
+                            text: 'Bank Transfer',
+                          ),
+                          selected: false,
+                        ),
+                        divider(),
+                        SizedBox(
+                          height: height * 0.02,
+                        ),
+                        SizedBox(
+                          height: height * 0.06,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Text(
+                                'Total',
+                                style: TextStyle(
+                                    fontSize: 30, fontWeight: FontWeight.bold),
+                              ),
+                              if (context.read<Cart>().cart.isNotEmpty)
+                                Text(
+                                  // '${context.watch<Cart>().total}',
+                                  '${Provider.of<Cart>(context, listen: false).total.toStringAsFixed(2)}',
+                                  style: TextStyle(
+                                      fontSize: 30,
+                                      fontWeight: FontWeight.bold),
+                                )
+                              else
+                                Text(
+                                  'k 0.0',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 30),
+                                )
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: height * 0.003,
+                        ),
+                        AppButton(
+                          text: 'Proceed',
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          borderRadius: 40,
+                          height: height * 0.01,
+                          textColor: Colors.white,
+                          bgColor: Colors.black,
+                          onTap: () {
+                            if (context.read<Cart>().carttotal() == 0.0) {
+                              Get.snackbar(
+                                'opps',
+                                'please add items to cart',
+                                backgroundColor: Colors.red.shade300,
+                                colorText: Colors.black,
+                                snackPosition: SnackPosition.TOP,
+                                duration: Duration(seconds: 5),
+                                icon: Icon(Icons.alarm),
+                                snackStyle: SnackStyle.FLOATING,
+                              );
+                            } else {
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  if (_init == Paymentmethod.mobile_money)
+                                    return TransactionAlertDalog(
+                                      text: 'Mobile Money',
+                                      hint: 'phone number',
+                                      formkey: _formkey,
+                                      textcontroller: textcontroller,
+                                      validator: 'enter valid phone number',
+                                    );
+                                  else if (_init == Paymentmethod.visa)
+                                    return TransactionAlertDalog(
+                                      text: 'Visa',
+                                      hint: 'card number',
+                                      formkey: _formkey,
+                                      textcontroller: textcontroller,
+                                      validator: 'enter valid card number',
+                                    );
+                                  else
+                                    return TransactionAlertDalog(
+                                      text: 'Bank Transfer',
+                                      hint: 'bank account number',
+                                      formkey: _formkey,
+                                      textcontroller: textcontroller,
+                                      validator:
+                                          'enter valid bank account number',
+                                    );
+                                },
+                              );
+                            }
                           },
                         ),
-                        const SizedBox(
-                          width: 40,
-                        ),
-                        const Text(
-                          'Payment methods',
-                          style: TextStyle(
-                              fontSize: 23, fontWeight: FontWeight.bold),
-                        )
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: 40,
-                  ),
-                  RadioListTile<Paymentmethod>(
-                    contentPadding: const EdgeInsets.only(left: 40),
-                    value: Paymentmethod.mobile_money,
-                    groupValue: _init,
-                    onChanged: (Paymentmethod? value) =>
-                        setState(() => {_init = value}),
-                    activeColor: Colors.deepPurple[500],
-                    title: const RadiotileCSS(
-                      imagestring: 'assets/icons/mbilemoney.png',
-                      text: 'Mobile Money',
-                    ),
-                    selected: false,
-                  ),
-                  const divider(),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  RadioListTile<Paymentmethod>(
-                    contentPadding: const EdgeInsets.only(left: 40),
-                    value: Paymentmethod.visa,
-                    groupValue: _init,
-                    onChanged: (Paymentmethod? value) =>
-                        setState(() => {_init = value}),
-                    activeColor: Colors.deepPurple[500],
-                    title: const RadiotileCSS(
-                      imagestring:
-                          'assets/icons/3069706_circle_payment_round icon_visa_icon.png',
-                      text: 'Visa',
-                    ),
-                    selected: false,
-                  ),
-                  const divider(),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  RadioListTile<Paymentmethod>(
-                    contentPadding: const EdgeInsets.only(left: 40),
-                    value: Paymentmethod.bank_transfer,
-                    groupValue: _init,
-                    onChanged: (Paymentmethod? value) =>
-                        setState(() => {_init = value}),
-                    activeColor: Colors.deepPurple[500],
-                    title: const RadiotileCSS(
-                      imagestring:
-                          'assets/icons/213750_bank_card_checkout_online shopping_payment method_icon.png',
-                      text: 'Bank Transfer',
-                    ),
-                    selected: false,
-                  ),
-                  const divider(),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  SizedBox(
-                    height: 30,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Text(
-                          'Total',
-                          style: TextStyle(
-                              fontSize: 30, fontWeight: FontWeight.bold),
-                        ),
-                        if (context.read<Cart>().cart.isNotEmpty)
-                          Text(
-                            // '${context.watch<Cart>().total}',
-                            '${Provider.of<Cart>(context, listen: false).total.toStringAsFixed(2)}',
-                            style: TextStyle(
-                                fontSize: 30, fontWeight: FontWeight.bold),
-                          )
-                        else
-                          Text(
-                            'k 0.0',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 30),
-                          )
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 10),
-                  AppButton(
-                    text: 'Proceed',
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    borderRadius: 40,
-                    height: 20,
-                    textColor: Colors.white,
-                    bgColor: Colors.black,
-                    onTap: () {
-                      if (context.read<Cart>().carttotal() == 0.0) {
-                        Get.snackbar(
-                          'opps',
-                          'please add items to cart',
-                          backgroundColor: Colors.red.shade300,
-                          colorText: Colors.black,
-                          snackPosition: SnackPosition.TOP,
-                          duration: Duration(seconds: 5),
-                          icon: Icon(Icons.alarm),
-                          snackStyle: SnackStyle.FLOATING,
-                        );
-                      } else {
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            if (_init == Paymentmethod.mobile_money)
-                              return TransactionAlertDalog(
-                                text: 'Mobile Money',
-                                hint: 'phone number',
-                                formkey: _formkey,
-                                textcontroller: textcontroller,
-                                validator: 'enter valid phone number',
-                              );
-                            else if (_init == Paymentmethod.visa)
-                              return TransactionAlertDalog(
-                                text: 'Visa',
-                                hint: 'card number',
-                                formkey: _formkey,
-                                textcontroller: textcontroller,
-                                validator: 'enter valid card number',
-                              );
-                            else
-                              return TransactionAlertDalog(
-                                text: 'Bank Transfer',
-                                hint: 'bank account number',
-                                formkey: _formkey,
-                                textcontroller: textcontroller,
-                                validator: 'enter valid bank account number',
-                              );
-                          },
-                        );
-                      }
-                    },
-                  ),
-                ]))
-          ]),
-          // ignore: prefer_const_constructors
-        ]));
+                      ]))
+                ]),
+                // ignore: prefer_const_constructors
+              ]),
+            )),
+      );
+    }));
   }
 }
 
@@ -265,6 +289,9 @@ class TransactionAlertDalog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    //total height and width of screen
+
     return AlertDialog(
         shape: ShapeBorder.lerp(
           RoundedRectangleBorder(
@@ -289,7 +316,7 @@ class TransactionAlertDalog extends StatelessWidget {
               )),
         ),
         content: Container(
-          height: MediaQuery.of(context).size.height * 0.4,
+          height: size.height * 0.36,
           padding: EdgeInsets.all(20),
           alignment: Alignment.center,
           child: Form(
@@ -298,7 +325,7 @@ class TransactionAlertDalog extends StatelessWidget {
               Text(text,
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
               SizedBox(
-                height: 20,
+                height: size.height * 0.03,
               ),
               TextFormField(
                 validator: (value) {
@@ -325,7 +352,7 @@ class TransactionAlertDalog extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: 20,
+                height: size.height * 0.03,
               ),
               Text(
                 'your cart total is ${context.read<Cart>().total}',
@@ -338,13 +365,14 @@ class TransactionAlertDalog extends StatelessWidget {
                 bgColor: Colors.black,
                 fontWeight: FontWeight.bold,
                 borderRadius: 30,
-                height: 10,
+                height: size.height * 0.02,
                 onTap: () {
                   if (_formkey.currentState!.validate()) {
                     gateway(
                         textcontroller.text, context.read<Cart>().carttotal());
                     Navigator.of(context).pop();
                     final SnackBar snackBar = SnackBar(
+                      duration: Duration(seconds: 1),
                         padding: EdgeInsets.only(top: 250, bottom: 300),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20),
@@ -368,7 +396,7 @@ class TransactionAlertDalog extends StatelessWidget {
                                 Text(
                                   'Transaction in progress',
                                   style: TextStyle(
-                                      fontSize: 20,
+                                      fontSize: 15,
                                       fontWeight: FontWeight.bold),
                                 ),
                               ],
@@ -411,28 +439,27 @@ class RadiotileCSS extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Row(children: <Widget>[
-      Expanded(
-          flex: 1,
-          child: InkWell(
-            child: Row(
-              // ignore: prefer_const_literals_to_create_immutables
-              children: [
-                Image.asset(
-                  imagestring,
-                  height: 35,
-                ),
-                const SizedBox(
-                  width: 33,
-                ),
-                Text(
-                  text,
-                  // ignore: prefer_const_constructors
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                )
-              ],
+      InkWell(
+        child: Row(
+          // ignore: prefer_const_literals_to_create_immutables
+          children: [
+            Image.asset(
+              imagestring,
+              height: 25.h,
             ),
-          )),
+            SizedBox(
+              width: size.height * 0.04,
+            ),
+            Text(
+              text,
+              // ignore: prefer_const_constructors
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            )
+          ],
+        ),
+      ),
     ]);
   }
 }

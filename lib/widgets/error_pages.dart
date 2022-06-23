@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:veganic_foods_app/widgets/custom_button.dart';
 import '../screens/scanning_page/scan.dart';
 
 Notfound(String message) {
