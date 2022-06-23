@@ -40,9 +40,10 @@ class Cart with ChangeNotifier {
     } else {
       _cart.add(product);
       notifyListeners();
-      final SnackBar snackbar = SnackBar(content: Text('item added'));
-      snackbarKey.currentState?.showSnackBar(snackbar);
-      return snackbar;
+
+      // final SnackBar snackbar = SnackBar(content: Text('item added'));
+      // snackbarKey.currentState?.showSnackBar(snackbar);
+      
     }
   }
 

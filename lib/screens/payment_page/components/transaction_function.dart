@@ -34,7 +34,7 @@ Future<dynamic> gateway(
       }));
   Map<String, dynamic> temp = jsonDecode(res.body);
   print('response is ${temp["task_id"]}');
-  if (res.statusCode != 200){
+  if (res.statusCode != 201){
     Get.snackbar('Error', 'Something went wrong',
         snackPosition: SnackPosition.TOP,
         duration: Duration(seconds: 3),
@@ -44,7 +44,7 @@ Future<dynamic> gateway(
         
   }
   const status_url =
-      'http://192.168.100.15:8007/api/order/check_payment_status';
+      'http://192.168.100.15:8007/api/order/check';
   Future<dynamic>.delayed(Duration(seconds: 150), () async {
     String post_url = status_url + '/${temp["task_id"]}';
     var status = await http.get(Uri.parse(post_url));

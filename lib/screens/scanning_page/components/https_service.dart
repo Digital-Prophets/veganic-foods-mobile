@@ -89,5 +89,5 @@ Future<Product> _getdata(String? id) async {
     return products;
 //====================================================================
   } else
-    return Notfound('product not found');
+    throw Exception('connection timed out');
 }
