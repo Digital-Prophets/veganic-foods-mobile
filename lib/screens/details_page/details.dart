@@ -101,12 +101,12 @@ class _DetailsState extends State<Details> {
               top: false,
               child: Column(
                 children: [
-                  backgroundbubbles(
-                    name: '',
-                    height: size.height * 0.24,
-                  ),
+                  // backgroundbubbles(
+                  //   name: '',
+                  //   height: size.height * 0.24,
+                  // ),
 
-                  // SizedBox(height: size.height * 0.005),
+                  SizedBox(height: size.height * 0.24),
                   Container(
                     width: size.width,
                     height: size.height * 0.67,
@@ -309,7 +309,7 @@ class _DetailsState extends State<Details> {
                               children: [
                                 Container(
                                   padding:
-                                      EdgeInsets.only(left: size.width * 0.1),
+                                      EdgeInsets.only(left: size.width * 0.07),
                                   child: Text(
                                     'K ${price}',
                                     style: const TextStyle(
@@ -399,10 +399,13 @@ class _DetailsState extends State<Details> {
                             onTap: () {
                               context.read<Cart>().addtoCart(prod);
                               Get.snackbar('', '',
-                              titleText: Text('${prod.name} added'),
-                                  icon: Icon(Icons.plus_one_rounded),
+                              // borderRadius: 30,
+                              messageText: Text('${prod.name} successfuly added to the basket'),
+                              titleText: Text('item  added', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
+                                  
+                                  icon: Icon(Icons.playlist_add_check),
                                   padding: EdgeInsets.all(15),
-                                  backgroundColor: Colors.grey.shade400);
+                                  backgroundColor: Colors.amberAccent.shade700);
                               print(prod.price);
                               Navigator.pushNamed(context, Routes.cart);
                             },
