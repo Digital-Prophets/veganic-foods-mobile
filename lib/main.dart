@@ -42,15 +42,6 @@ class MyApp extends StatelessWidget {
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         home: LandingPage(),
-        // home: Details(
-        //   category: 1,
-        //   description: 'im hungry yo',
-        //   image: '',
-        //   name: 'dodo',
-        //   price: 30,
-        //   product_id: 1,
-        //   quantity: 1,
-        // ),
         routes: {
           Routes.home: (context) => LandingPage(),
           Routes.scan: (context) => ScanningPage(),

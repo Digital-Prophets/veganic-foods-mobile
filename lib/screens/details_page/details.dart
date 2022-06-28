@@ -10,7 +10,6 @@ import 'package:veganic_foods_app/screens/payment_page/components/background_ecl
 import 'package:veganic_foods_app/utils/routes.dart';
 import 'package:veganic_foods_app/widgets/bottom_nav_bar.dart';
 import 'package:veganic_foods_app/widgets/custom_button.dart';
-
 // ignore: must_be_immutable
 class Details extends StatefulWidget {
   final int product_id;
